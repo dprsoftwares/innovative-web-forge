@@ -22,8 +22,12 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors">
-              DevStack Solutions
+            <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
+              <img 
+                src="/lovable-uploads/5fa05619-1f58-4c66-b497-f2c004e34f3a.png" 
+                alt="Aierologics Labs" 
+                className="h-8 w-auto"
+              />
             </Link>
           </div>
 
