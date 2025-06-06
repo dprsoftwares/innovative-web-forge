@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import { Mail, Contact, User } from 'lucide-react';
+import { Mail, Phone, User } from 'lucide-react';
 import { useToast } from '../hooks/use-toast';
 
 const Contact = () => {
@@ -82,7 +82,7 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-start">
-                  <Contact className="text-blue-600 mt-1 mr-4" size={20} />
+                  <Phone className="text-blue-600 mt-1 mr-4" size={20} />
                   <div>
                     <h3 className="font-semibold text-gray-900">Phone</h3>
                     <p className="text-gray-600">+1 (555) 123-4567</p>
