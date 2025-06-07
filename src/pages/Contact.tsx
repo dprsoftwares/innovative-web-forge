@@ -25,7 +25,8 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      const { error } = await supabase
+      // Save to our database first
+      const { error: dbError } = await supabase
         .from('contact_submissions')
         .insert([
           {
@@ -37,14 +38,41 @@ const Contact = () => {
           }
         ]);
 
-      if (error) {
-        throw error;
+      if (dbError) {
+        throw dbError;
       }
 
-      toast({
-        title: "Message Sent Successfully!",
-        description: "Thank you for contacting us. We'll get back to you within 24 hours.",
+      // Send to Dolibarr ERP
+      const { data: dolibarrResult, error: dolibarrError } = await supabase.functions.invoke('send-to-dolibarr', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          subject: formData.subject,
+          message: formData.message
+        }
       });
+
+      console.log('Dolibarr integration result:', dolibarrResult);
+
+      if (dolibarrError) {
+        console.error('Dolibarr integration error:', dolibarrError);
+        toast({
+          title: "Message Saved",
+          description: "Your message was saved but couldn't be synced with our ERP system. We'll follow up manually.",
+          variant: "destructive",
+        });
+      } else if (dolibarrResult?.warning) {
+        toast({
+          title: "Message Saved with Warning",
+          description: dolibarrResult.warning,
+        });
+      } else {
+        toast({
+          title: "Message Sent Successfully!",
+          description: "Thank you for contacting us. We'll get back to you within 24 hours.",
+        });
+      }
 
       // Reset form
       setFormData({
