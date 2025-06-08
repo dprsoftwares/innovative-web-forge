@@ -41,17 +41,17 @@ const About = () => {
   const values = [
     {
       icon: Heart,
-      title: 'नवाचार (Innovation)',
+      title: 'Innovation',
       description: 'We stay at the forefront of technology, constantly learning and adopting new tools and methodologies to deliver cutting-edge solutions for Indian businesses.'
     },
     {
       icon: Award,
-      title: 'गुणवत्ता (Quality)',
+      title: 'Quality',
       description: 'Every line of code we write is crafted with precision. We believe in thorough testing, clean architecture, and maintainable solutions.'
     },
     {
       icon: Users,
-      title: 'साझेदारी (Partnership)',
+      title: 'Partnership',
       description: 'We work closely with our clients as partners, understanding their business goals and providing strategic guidance beyond just technical implementation.'
     }
   ];
@@ -72,12 +72,11 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
           <AnimatedSection>
             <div className="text-center">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">DevStack Solutions के बारे में</h1>
-              <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-orange-300">(About DevStack Solutions)</h2>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">About DevStack Solutions</h1>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto">
                 We're a passionate team of developers, designers, and innovators from across India, 
                 committed to delivering exceptional software solutions that drive business growth 
-                in the digital age of Bharat.
+                in the digital age of modern India.
               </p>
             </div>
           </AnimatedSection>
@@ -90,7 +89,7 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <AnimatedSection animation="slide-up">
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">हमारी कहानी (Our Story)</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
                 <p className="text-gray-600 mb-4">
                   Founded in 2019 in the heart of India's tech capital, DevStack Solutions began as a 
                   small team of passionate developers who believed that great software could transform 
@@ -127,7 +126,7 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">हमारे मूल्य (Our Values)</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Values</h2>
               <p className="text-xl text-gray-600">The principles that guide everything we do</p>
             </div>
           </AnimatedSection>
@@ -155,7 +154,7 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">हमारी टीम से मिलें (Meet Our Team)</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
               <p className="text-xl text-gray-600">
                 Talented professionals from across India who bring your ideas to life
               </p>

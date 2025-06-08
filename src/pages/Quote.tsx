@@ -191,15 +191,10 @@ const Quote = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
           <AnimatedSection>
             <div className="text-center">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">अपना मुफ्त कोटेशन प्राप्त करें</h1>
-              <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-green-300">(Get Your Free Quote)</h2>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">Get Your Free Quote</h1>
               <p className="text-xl text-green-100 max-w-3xl mx-auto">
-                हमें अपने प्रोजेक्ट के बारे में बताएं और हम आपको 24 घंटे के भीतर एक विस्तृत, 
-                पारदर्शी कोटेशन प्रदान करेंगे। कोई दायित्व नहीं, सिर्फ ईमानदार मूल्य निर्धारण।
-              </p>
-              <p className="text-lg text-green-200 mt-4">
-                (Tell us about your project and we'll provide you with a detailed, transparent quote 
-                within 24 hours. No obligations, just honest pricing.)
+                Tell us about your project and we'll provide you with a detailed, transparent quote 
+                within 24 hours. No obligations, just honest pricing tailored for the Indian market.
               </p>
             </div>
           </AnimatedSection>
@@ -212,12 +207,9 @@ const Quote = () => {
           <AnimatedSection>
             <div className="bg-white rounded-lg shadow-xl p-8 hover:shadow-2xl transition-shadow duration-500">
               <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">प्रोजेक्ट विवरण (Project Details)</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">Project Details</h2>
                 <p className="text-gray-600">
-                  कृपया एक सटीक कोटेशन बनाने में हमारी मदद के लिए जितना संभव हो उतना विवरण प्रदान करें
-                </p>
-                <p className="text-sm text-gray-500 mt-2">
-                  (Please provide as much detail as possible to help us create an accurate quote)
+                  Please provide as much detail as possible to help us create an accurate quote
                 </p>
               </div>
 
@@ -225,11 +217,11 @@ const Quote = () => {
                 {/* Contact Information */}
                 <AnimatedSection animation="slide-up" delay={200}>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">संपर्क जानकारी (Contact Information)</h3>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4">Contact Information</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="group">
                         <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                          पूरा नाम (Full Name) *
+                          Full Name *
                         </label>
                         <input
                           type="text"
@@ -240,13 +232,13 @@ const Quote = () => {
                           onChange={handleChange}
                           disabled={isSubmitting}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 group-hover:shadow-md"
-                          placeholder="राम शर्मा (Ram Sharma)"
+                          placeholder="Ram Sharma"
                         />
                       </div>
 
                       <div className="group">
                         <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                          ईमेल पता (Email Address) *
+                          Email Address *
                         </label>
                         <input
                           type="email"
@@ -263,7 +255,7 @@ const Quote = () => {
 
                       <div className="group">
                         <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                          कंपनी का नाम (Company Name)
+                          Company Name
                         </label>
                         <input
                           type="text"
@@ -273,13 +265,13 @@ const Quote = () => {
                           onChange={handleChange}
                           disabled={isSubmitting}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 group-hover:shadow-md"
-                          placeholder="आपकी कंपनी (Your Company)"
+                          placeholder="Your Company"
                         />
                       </div>
 
                       <div className="group">
                         <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                          फ़ोन नंबर (Phone Number)
+                          Phone Number
                         </label>
                         <input
                           type="tel"
@@ -299,11 +291,11 @@ const Quote = () => {
                 {/* Project Details */}
                 <AnimatedSection animation="slide-up" delay={300}>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">परियोजना विवरण (Project Details)</h3>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4">Project Details</h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       <div className="group">
                         <label htmlFor="projectType" className="block text-sm font-medium text-gray-700 mb-2">
-                          प्रोजेक्ट का प्रकार (Project Type) *
+                          Project Type *
                         </label>
                         <select
                           id="projectType"
@@ -314,7 +306,7 @@ const Quote = () => {
                           disabled={isSubmitting}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 group-hover:shadow-md"
                         >
-                          <option value="">प्रोजेक्ट का प्रकार चुनें (Select project type)</option>
+                          <option value="">Select project type</option>
                           {projectTypes.map((type) => (
                             <option key={type} value={type}>{type}</option>
                           ))}
@@ -323,7 +315,7 @@ const Quote = () => {
 
                       <div className="group">
                         <label htmlFor="budget" className="block text-sm font-medium text-gray-700 mb-2">
-                          बजट सीमा (Budget Range) *
+                          Budget Range *
                         </label>
                         <select
                           id="budget"
@@ -334,7 +326,7 @@ const Quote = () => {
                           disabled={isSubmitting}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 group-hover:shadow-md"
                         >
-                          <option value="">बजट सीमा चुनें (Select budget range)</option>
+                          <option value="">Select budget range</option>
                           {budgetRanges.map((range) => (
                             <option key={range} value={range}>{range}</option>
                           ))}
@@ -343,7 +335,7 @@ const Quote = () => {
 
                       <div className="group">
                         <label htmlFor="timeline" className="block text-sm font-medium text-gray-700 mb-2">
-                          समयरेखा (Timeline) *
+                          Timeline *
                         </label>
                         <select
                           id="timeline"
@@ -354,7 +346,7 @@ const Quote = () => {
                           disabled={isSubmitting}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 group-hover:shadow-md"
                         >
-                          <option value="">समयरेखा चुनें (Select timeline)</option>
+                          <option value="">Select timeline</option>
                           {timelineOptions.map((option) => (
                             <option key={option} value={option}>{option}</option>
                           ))}
@@ -367,9 +359,8 @@ const Quote = () => {
                 {/* Features */}
                 <AnimatedSection animation="slide-up" delay={400}>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">आवश्यक सुविधाएँ (Required Features)</h3>
-                    <p className="text-gray-600 mb-4">उन सभी सुविधाओं का चयन करें जो आपके प्रोजेक्ट पर लागू होती हैं:</p>
-                    <p className="text-sm text-gray-500 mb-4">(Select all features that apply to your project:)</p>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4">Required Features</h3>
+                    <p className="text-gray-600 mb-4">Select all features that apply to your project:</p>
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                       {commonFeatures.map((feature) => (
                         <label key={feature} className="flex items-center cursor-pointer group hover:scale-105 transition-transform duration-300">
@@ -390,11 +381,11 @@ const Quote = () => {
                 {/* Project Description */}
                 <AnimatedSection animation="slide-up" delay={500}>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">परियोजना विवरण (Project Description)</h3>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4">Project Description</h3>
                     <div className="space-y-6">
                       <div className="group">
                         <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-2">
-                          विस्तृत विवरण (Detailed Description) *
+                          Detailed Description *
                         </label>
                         <textarea
                           id="description"
@@ -405,13 +396,13 @@ const Quote = () => {
                           onChange={handleChange}
                           disabled={isSubmitting}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 group-hover:shadow-md"
-                          placeholder="कृपया अपने प्रोजेक्ट का विस्तार से वर्णन करें। अपने लक्ष्यों, लक्षित दर्शकों, प्रमुख कार्यक्षमता, डिज़ाइन प्राथमिकताओं और किसी भी विशिष्ट आवश्यकता या बाधाओं को शामिल करें..."
+                          placeholder="Please describe your project in detail. Include your goals, target audience, key functionality, design preferences, and any specific requirements or constraints..."
                         ></textarea>
                       </div>
 
                       <div className="group">
                         <label htmlFor="priority" className="block text-sm font-medium text-gray-700 mb-2">
-                          परियोजना प्राथमिकता (Project Priority)
+                          Project Priority
                         </label>
                         <select
                           id="priority"
@@ -421,9 +412,9 @@ const Quote = () => {
                           disabled={isSubmitting}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 group-hover:shadow-md"
                         >
-                          <option value="low">कम - लचीली समयरेखा (Low - Flexible timeline)</option>
-                          <option value="medium">मध्यम - मानक प्राथमिकता (Medium - Standard priority)</option>
-                          <option value="high">उच्च - जरूरी प्रोजेक्ट (High - Urgent project)</option>
+                          <option value="low">Low - Flexible timeline</option>
+                          <option value="medium">Medium - Standard priority</option>
+                          <option value="high">High - Urgent project</option>
                         </select>
                       </div>
                     </div>
@@ -438,13 +429,10 @@ const Quote = () => {
                       disabled={isSubmitting}
                       className="bg-gradient-to-r from-orange-600 to-red-600 text-white px-12 py-4 rounded-lg hover:from-orange-700 hover:to-red-700 transition-all duration-300 font-medium text-lg disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 shadow-lg"
                     >
-                      {isSubmitting ? 'सबमिट हो रहा है... (Submitting...)' : 'कोटेशन अनुरोध सबमिट करें (Submit Quote Request)'}
+                      {isSubmitting ? 'Submitting...' : 'Submit Quote Request'}
                     </button>
                     <p className="text-gray-500 text-sm mt-4">
-                      हम आपकी आवश्यकताओं की समीक्षा करेंगे और 24 घंटे के भीतर आपको एक विस्तृत कोटेशन भेजेंगे
-                    </p>
-                    <p className="text-gray-400 text-xs mt-2">
-                      (We'll review your requirements and send you a detailed quote within 24 hours)
+                      We'll review your requirements and send you a detailed quote within 24 hours
                     </p>
                   </div>
                 </AnimatedSection>
@@ -459,22 +447,19 @@ const Quote = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">आगे क्या होता है? (What Happens Next?)</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">What Happens Next?</h2>
               <p className="text-xl text-gray-600">
-                हमारी पारदर्शी कोटेशन प्रक्रिया सुनिश्चित करती है कि आपको सटीक मूल्य निर्धारण मिले
-              </p>
-              <p className="text-lg text-gray-500 mt-2">
-                (Our transparent quote process ensures you get accurate pricing)
+                Our transparent quote process ensures you get accurate pricing
               </p>
             </div>
           </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
-              { step: '1', title: 'समीक्षा (Review)', desc: 'We carefully review your requirements and ask clarifying questions if needed' },
-              { step: '2', title: 'विश्लेषण (Analysis)', desc: 'Our team analyzes the scope and creates a detailed project breakdown' },
-              { step: '3', title: 'कोटेशन (Quote)', desc: 'You receive a comprehensive quote with timeline and deliverables' },
-              { step: '4', title: 'चर्चा (Discussion)', desc: 'We schedule a call to discuss the quote and answer any questions' }
+              { step: '1', title: 'Review', desc: 'We carefully review your requirements and ask clarifying questions if needed' },
+              { step: '2', title: 'Analysis', desc: 'Our team analyzes the scope and creates a detailed project breakdown' },
+              { step: '3', title: 'Quote', desc: 'You receive a comprehensive quote with timeline and deliverables' },
+              { step: '4', title: 'Discussion', desc: 'We schedule a call to discuss the quote and answer any questions' }
             ].map((item, index) => (
               <AnimatedSection key={index} animation="fade-in" delay={index * 150}>
                 <div className="text-center group hover:scale-105 transition-transform duration-300">

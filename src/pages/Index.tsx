@@ -46,7 +46,7 @@ const Index = () => {
               <div>
                 <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
                   Digital Solutions for 
-                  <span className="text-orange-300"> Bharat's Future</span>
+                  <span className="text-orange-300"> India's Future</span>
                 </h1>
                 <p className="text-xl mb-8 text-orange-100">
                   Empowering Indian businesses with cutting-edge technology, innovative design, 
@@ -57,13 +57,13 @@ const Index = () => {
                     to="/quote"
                     className="bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-orange-50 transition-all duration-300 hover:scale-105 text-center shadow-lg"
                   >
-                    शुरू करें (Get Started)
+                    Get Started
                   </Link>
                   <Link
                     to="/portfolio"
                     className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-orange-600 transition-all duration-300 hover:scale-105 text-center"
                   >
-                    हमारा काम देखें (View Our Work)
+                    View Our Work
                   </Link>
                 </div>
               </div>
@@ -86,7 +86,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">हमारी विशेषज्ञता (Our Expertise)</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Expertise</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 From concept to deployment, we deliver comprehensive solutions across the entire technology stack, 
                 specially designed for the Indian market
@@ -112,7 +112,7 @@ const Index = () => {
                       to="/services"
                       className="text-orange-600 font-medium hover:text-orange-700 transition-colors inline-flex items-center group"
                     >
-                      और जानें (Learn More) 
+                      Learn More
                       <span className="ml-1 group-hover:translate-x-1 transition-transform duration-300">→</span>
                     </Link>
                   </div>
@@ -130,23 +130,19 @@ const Index = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div className="group hover:scale-110 transition-transform duration-300">
                 <div className="text-4xl font-bold text-orange-400 mb-2 group-hover:text-orange-300 transition-colors">100+</div>
-                <div className="text-gray-300">प्रोजेक्ट्स पूरे किए</div>
-                <div className="text-sm text-gray-400">(Projects Delivered)</div>
+                <div className="text-gray-300">Projects Delivered</div>
               </div>
               <div className="group hover:scale-110 transition-transform duration-300">
                 <div className="text-4xl font-bold text-orange-400 mb-2 group-hover:text-orange-300 transition-colors">50+</div>
-                <div className="text-gray-300">खुश ग्राहक</div>
-                <div className="text-sm text-gray-400">(Happy Clients)</div>
+                <div className="text-gray-300">Happy Clients</div>
               </div>
               <div className="group hover:scale-110 transition-transform duration-300">
                 <div className="text-4xl font-bold text-orange-400 mb-2 group-hover:text-orange-300 transition-colors">5+</div>
-                <div className="text-gray-300">साल का अनुभव</div>
-                <div className="text-sm text-gray-400">(Years Experience)</div>
+                <div className="text-gray-300">Years Experience</div>
               </div>
               <div className="group hover:scale-110 transition-transform duration-300">
                 <div className="text-4xl font-bold text-orange-400 mb-2 group-hover:text-orange-300 transition-colors">24/7</div>
-                <div className="text-gray-300">सहायता</div>
-                <div className="text-sm text-gray-400">(Support)</div>
+                <div className="text-gray-300">Support</div>
               </div>
             </div>
           </AnimatedSection>
@@ -166,19 +162,15 @@ const Index = () => {
         <div className="absolute inset-0 bg-black opacity-10"></div>
         <AnimatedSection>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h2 className="text-3xl font-bold mb-4">अपने विचारों को बदलने के लिए तैयार हैं?</h2>
-            <h3 className="text-xl mb-4">(Ready to Transform Your Ideas?)</h3>
+            <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Ideas?</h2>
             <p className="text-xl mb-8 text-orange-100">
-              आइए आपके प्रोजेक्ट पर चर्चा करें और साथ मिलकर कुछ अद्भुत बनाएं
-            </p>
-            <p className="text-lg mb-8 text-orange-200">
-              (Let's discuss your project and create something amazing together)
+              Let's discuss your project and create something amazing together
             </p>
             <Link
               to="/contact"
               className="bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-orange-50 transition-all duration-300 hover:scale-105 inline-block shadow-lg"
             >
-              अपना प्रोजेक्ट शुरू करें (Start Your Project)
+              Start Your Project
             </Link>
           </div>
         </AnimatedSection>
