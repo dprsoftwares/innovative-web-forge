@@ -3,9 +3,11 @@ import React, { useState } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import { useToast } from '../hooks/use-toast';
+import { supabase } from '../integrations/supabase/client';
 
 const Quote = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -60,30 +62,96 @@ const Quote = () => {
     'Third-party Integrations'
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Here you would typically send the form data to your backend
-    console.log('Quote form submitted:', formData);
+    if (isSubmitting) return;
     
-    toast({
-      title: "Quote Request Submitted!",
-      description: "Thank you for your request. We'll prepare a detailed quote and get back to you within 24 hours.",
-    });
+    setIsSubmitting(true);
+    
+    try {
+      // Save to our database first
+      const { error: dbError } = await supabase
+        .from('quote_submissions')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            company: formData.company || null,
+            phone: formData.phone || null,
+            project_type: formData.projectType,
+            budget: formData.budget,
+            timeline: formData.timeline,
+            description: formData.description,
+            features: formData.features.length > 0 ? formData.features : null,
+            priority: formData.priority
+          }
+        ]);
 
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      company: '',
-      phone: '',
-      projectType: '',
-      budget: '',
-      timeline: '',
-      description: '',
-      features: [],
-      priority: 'medium'
-    });
+      if (dbError) {
+        throw dbError;
+      }
+
+      // Send to Dolibarr ERP
+      const { data: dolibarrResult, error: dolibarrError } = await supabase.functions.invoke('send-quote-to-dolibarr', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          phone: formData.phone,
+          projectType: formData.projectType,
+          budget: formData.budget,
+          timeline: formData.timeline,
+          description: formData.description,
+          features: formData.features,
+          priority: formData.priority
+        }
+      });
+
+      console.log('Dolibarr integration result:', dolibarrResult);
+
+      if (dolibarrError) {
+        console.error('Dolibarr integration error:', dolibarrError);
+        toast({
+          title: "Quote Saved",
+          description: "Your quote request was saved but couldn't be synced with our ERP system. We'll follow up manually.",
+          variant: "destructive",
+        });
+      } else if (dolibarrResult?.warning) {
+        toast({
+          title: "Quote Saved with Warning",
+          description: dolibarrResult.warning,
+        });
+      } else {
+        toast({
+          title: "Quote Request Submitted!",
+          description: "Thank you for your request. We'll prepare a detailed quote and get back to you within 24 hours.",
+        });
+      }
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        phone: '',
+        projectType: '',
+        budget: '',
+        timeline: '',
+        description: '',
+        features: [],
+        priority: 'medium'
+      });
+    } catch (error) {
+      console.error('Error submitting quote form:', error);
+      toast({
+        title: "Error",
+        description: "There was an issue submitting your quote request. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -148,7 +216,8 @@ const Quote = () => {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
                       placeholder="John Doe"
                     />
                   </div>
@@ -164,7 +233,8 @@ const Quote = () => {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -179,7 +249,8 @@ const Quote = () => {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
                       placeholder="Your Company"
                     />
                   </div>
@@ -194,7 +265,8 @@ const Quote = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
                       placeholder="+1 (555) 123-4567"
                     />
                   </div>
@@ -215,7 +287,8 @@ const Quote = () => {
                       required
                       value={formData.projectType}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <option value="">Select project type</option>
                       {projectTypes.map((type) => (
@@ -234,7 +307,8 @@ const Quote = () => {
                       required
                       value={formData.budget}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <option value="">Select budget range</option>
                       {budgetRanges.map((range) => (
@@ -253,7 +327,8 @@ const Quote = () => {
                       required
                       value={formData.timeline}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <option value="">Select timeline</option>
                       {timelineOptions.map((option) => (
@@ -275,7 +350,8 @@ const Quote = () => {
                         type="checkbox"
                         checked={formData.features.includes(feature)}
                         onChange={() => handleFeatureToggle(feature)}
-                        className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                        disabled={isSubmitting}
+                        className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
                       />
                       <span className="ml-2 text-sm text-gray-700">{feature}</span>
                     </label>
@@ -298,7 +374,8 @@ const Quote = () => {
                       rows={6}
                       value={formData.description}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
                       placeholder="Please describe your project in detail. Include your goals, target audience, key functionality, design preferences, and any specific requirements or constraints..."
                     ></textarea>
                   </div>
@@ -312,7 +389,8 @@ const Quote = () => {
                       name="priority"
                       value={formData.priority}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <option value="low">Low - Flexible timeline</option>
                       <option value="medium">Medium - Standard priority</option>
@@ -326,9 +404,10 @@ const Quote = () => {
               <div className="text-center">
                 <button
                   type="submit"
-                  className="bg-blue-600 text-white px-12 py-4 rounded-lg hover:bg-blue-700 transition-colors font-medium text-lg"
+                  disabled={isSubmitting}
+                  className="bg-blue-600 text-white px-12 py-4 rounded-lg hover:bg-blue-700 transition-colors font-medium text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Submit Quote Request
+                  {isSubmitting ? 'Submitting...' : 'Submit Quote Request'}
                 </button>
                 <p className="text-gray-500 text-sm mt-4">
                   We'll review your requirements and send you a detailed quote within 24 hours

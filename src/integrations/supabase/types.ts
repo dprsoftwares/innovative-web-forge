@@ -39,6 +39,51 @@ export type Database = {
         }
         Relationships: []
       }
+      quote_submissions: {
+        Row: {
+          budget: string
+          company: string | null
+          created_at: string
+          description: string
+          email: string
+          features: string[] | null
+          id: string
+          name: string
+          phone: string | null
+          priority: string
+          project_type: string
+          timeline: string
+        }
+        Insert: {
+          budget: string
+          company?: string | null
+          created_at?: string
+          description: string
+          email: string
+          features?: string[] | null
+          id?: string
+          name: string
+          phone?: string | null
+          priority?: string
+          project_type: string
+          timeline: string
+        }
+        Update: {
+          budget?: string
+          company?: string | null
+          created_at?: string
+          description?: string
+          email?: string
+          features?: string[] | null
+          id?: string
+          name?: string
+          phone?: string | null
+          priority?: string
+          project_type?: string
+          timeline?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
