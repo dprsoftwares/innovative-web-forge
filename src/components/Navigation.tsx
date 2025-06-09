@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Code, Cpu, Zap } from 'lucide-react';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,16 +18,25 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="bg-white shadow-lg fixed w-full top-0 z-50">
+    <nav className="tech-header shadow-lg fixed w-full top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
+            <Link to="/" className="flex items-center hover:opacity-80 transition-opacity cursor-hover group">
               <img 
                 src="/lovable-uploads/5fa05619-1f58-4c66-b497-f2c004e34f3a.png" 
                 alt="Aierologics Labs" 
-                className="h-8 w-auto"
+                className="h-10 w-auto group-hover:scale-105 transition-transform"
               />
+              <div className="ml-3 hidden sm:block">
+                <div className="text-white font-bold text-xl">Aierologics</div>
+                <div className="text-sky-300 text-xs font-medium">LABS</div>
+              </div>
+              <div className="ml-2 hidden lg:flex items-center space-x-1 text-sky-400">
+                <Code size={16} className="animate-pulse" />
+                <Cpu size={16} className="animate-pulse delay-75" />
+                <Zap size={16} className="animate-pulse delay-150" />
+              </div>
             </Link>
           </div>
 
@@ -37,10 +46,10 @@ const Navigation = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 cursor-hover ${
                   isActive(item.path)
-                    ? 'text-blue-600 bg-blue-50'
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                    ? 'text-sky-400 bg-sky-400/10 shadow-lg'
+                    : 'text-slate-300 hover:text-sky-400 hover:bg-sky-400/5'
                 }`}
               >
                 {item.name}
@@ -48,7 +57,7 @@ const Navigation = () => {
             ))}
             <Link
               to="/quote"
-              className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+              className="tech-button cursor-hover"
             >
               Get Quote
             </Link>
@@ -58,7 +67,7 @@ const Navigation = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-blue-600 transition-colors"
+              className="text-slate-300 hover:text-sky-400 transition-colors cursor-hover"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -67,17 +76,17 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden bg-white border-t border-gray-200">
+          <div className="md:hidden bg-slate-800/95 backdrop-blur-sm border-t border-sky-400/20">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                  className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 cursor-hover ${
                     isActive(item.path)
-                      ? 'text-blue-600 bg-blue-50'
-                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                      ? 'text-sky-400 bg-sky-400/10'
+                      : 'text-slate-300 hover:text-sky-400 hover:bg-sky-400/5'
                   }`}
                 >
                   {item.name}
@@ -86,7 +95,7 @@ const Navigation = () => {
               <Link
                 to="/quote"
                 onClick={() => setIsOpen(false)}
-                className="block bg-blue-600 text-white px-3 py-2 rounded-md text-base font-medium hover:bg-blue-700 transition-colors mt-4"
+                className="block tech-button mt-4 text-center cursor-hover"
               >
                 Get Quote
               </Link>
